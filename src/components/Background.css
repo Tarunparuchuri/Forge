@@ -1,0 +1,100 @@
+.bg-animation-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  background-color: var(--bg-primary);
+  overflow: hidden;
+  pointer-events: none;
+}
+
+/* Moving Mesh Gradient */
+.bg-mesh {
+  position: absolute;
+  width: 200%;
+  height: 200%;
+  top: -50%;
+  left: -50%;
+  background-image: 
+    radial-gradient(at 0% 0%, rgba(255, 49, 49, 0.05) 0, transparent 50%),
+    radial-gradient(at 50% 0%, rgba(57, 255, 20, 0.05) 0, transparent 50%),
+    radial-gradient(at 100% 0%, rgba(0, 215, 255, 0.05) 0, transparent 50%);
+  filter: blur(100px);
+  animation: meshMove 20s ease-in-out infinite alternate;
+}
+
+@keyframes meshMove {
+  0% { transform: rotate(0deg) scale(1); }
+  100% { transform: rotate(10deg) scale(1.1); }
+}
+
+/* Animated Particles */
+.particle {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  background: white;
+  border-radius: 50%;
+  opacity: 0;
+  animation: floatParticle var(--duration) linear infinite;
+}
+
+@keyframes floatParticle {
+  0% { transform: translateY(0) scale(0); opacity: 0; }
+  20% { opacity: 0.3; }
+  80% { opacity: 0.3; }
+  100% { transform: translateY(-100vh) scale(1.5); opacity: 0; }
+}
+
+/* Dynamic Glowing Orbs */
+.bg-glow-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(120px);
+  opacity: 0.08;
+  transition: all 5s ease;
+}
+
+.orb-1 {
+  width: 40vw;
+  height: 40vw;
+  background: var(--accent);
+  top: -10%;
+  left: -10%;
+  animation: orbMove1 25s infinite alternate;
+}
+
+.orb-2 {
+  width: 35vw;
+  height: 35vw;
+  background: var(--accent-secondary);
+  bottom: -5%;
+  right: -5%;
+  animation: orbMove2 30s infinite alternate;
+}
+
+.orb-3 {
+  width: 30vw;
+  height: 30vw;
+  background: var(--accent-blue);
+  top: 40%;
+  left: 30%;
+  animation: orbMove3 20s infinite alternate;
+}
+
+@keyframes orbMove1 {
+  from { transform: translate(0, 0); }
+  to { transform: translate(10vw, 15vh); }
+}
+
+@keyframes orbMove2 {
+  from { transform: translate(0, 0); }
+  to { transform: translate(-15vw, -10vh); }
+}
+
+@keyframes orbMove3 {
+  from { transform: translate(0, 0); }
+  to { transform: translate(15vw, 5vh); }
+}
